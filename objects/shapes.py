@@ -2,6 +2,10 @@ from .base import Object3D
 
 class Cube(Object3D):
 
+    def __init__(self, center, size, colour):
+        super().__init__(center, size, colour)
+
+
     def generate_basic(self): 
         size = self.size / 2 
         cx, cy, cz = self.center

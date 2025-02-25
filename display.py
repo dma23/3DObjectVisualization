@@ -3,16 +3,35 @@ import matplotlib.pyplot as plt
 from generator import ObjectGenerator
 from matplotlib.animation import FuncAnimation
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from design.model import figure
 
 
 class Display3D: 
     
     def __init__(self, root):
         self.root = root
-        self.root.title("Display Shapes")
+        self.root.title("Object Visualization")
         self.size = 10
         self.objects = []
         self.generator = ObjectGenerator()
+
+
+        self.frame = tk.Frame(root)
+        self.frame.pack(side=tk.TOP, fill=tk.X)
+
+        self.create_button1 = tk.Button(
+            self.frame,
+            text = 'Generate Shapes',
+            command = self.generate_shapes
+        )
+        self.create_button1.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.create_button2 = tk.Button(
+            self.frame,
+            text = 'Generate Models',
+            command = self.generate_model
+        )
+        self.create_button2.pack(side=tk.RIGHT, padx=5, pady=5)
 
         self.fig = plt.figure(figsize=(8, 8))
         self.ax = self.fig.add_subplot(111, projection='3d')
@@ -21,25 +40,34 @@ class Display3D:
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
         self.anim = FuncAnimation(
-            self.fig, self.update, interval=50, blit=50
+            self.fig, self.update, frames=360, interval=20, blit=True
         )
 
-        self.generate_shapes()
+
 
 
     def generate_shapes(self): 
-        count = 1 
-        self.objects.append(self.generator.generate_object())
+        self.objects = []
+        count = 55
+        for i in range(0, count): 
+            self.objects.append(self.generator.generate_object())
         self.update_plot()
 
 
-    def update_plot(self):
-        """Update the 3D plot with the current objects"""
+    def generate_model(self):
+        self.objects = []
+        self.model = figure()
+        self.objects = self.model.build()
+
+        self.update_plot(-10, 10)
+
+
+    def update_plot(self, minVal=-100, maxVal=100):
         self.ax.clear()
         
-        self.ax.set_xlim(-10, 10)
-        self.ax.set_ylim(-10, 10)
-        self.ax.set_zlim(-10, 10)
+        self.ax.set_xlim(minVal, maxVal)
+        self.ax.set_ylim(minVal, maxVal)
+        self.ax.set_zlim(minVal, maxVal)
         
         self.ax.set_xlabel('X')
         self.ax.set_ylabel('Y')
@@ -57,3 +85,12 @@ class Display3D:
     def update(self, frame):
         self.ax.view_init(elev=30, azim=frame % 360)
         return self.ax,
+
+
+
+if __name__ == '__main__':
+    
+    root = tk.Tk()
+    test = Display3D(root)
+    root.geometry('600x600')
+    root.mainloop()
