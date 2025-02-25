@@ -6,7 +6,7 @@ class Cube(Object3D):
         size = self.size / 2 
         cx, cy, cz = self.center
 
-        self.verticesize = [
+        self.vertices = [
             [cx-size, cy-size, cz-size], [cx+size, cy-size, cz-size], [cx+size, cy+size, cz-size], [cx-size, cy+size, cz-size],
             [cx-size, cy-size, cz+size], [cx+size, cy-size, cz+size], [cx+size, cy+size, cz+size], [cx-size, cy+size, cz+size]
         ]

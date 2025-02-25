@@ -9,4 +9,20 @@ class Object3D:
 
         self.vertices = None
         self.faces = None
+        self.generate_basic()
+
+
+    def generate_basic(self):
+
+        pass 
+
     
+    def get_collection(self):
+
+        if self.vertices is None or self.faces is None:
+            return None
+        
+        face_vertices = [[self.vertices[i] for i in face] for face in self.faces]
+        collection = Poly3DCollection(face_vertices, alpha=0.8, linewidths=1, edgecolors='black')
+        collection.set_facecolor(self.colour)
+        return collection
