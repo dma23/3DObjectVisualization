@@ -59,7 +59,7 @@ class Display3D:
         self.model = figure()
         self.objects = self.model.build()
 
-        self.update_plot(-10, 10)
+        self.update_plot(-10, 50)
 
 
     def update_plot(self, minVal=-100, maxVal=100):

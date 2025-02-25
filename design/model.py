@@ -24,15 +24,15 @@ class figure:
 
         self.cubes = []
 
-        self._add_head(0, 10, 0)
+        self._add_head(20, 15, 20)
         
-        self._add_torso(0, 4, 0)
+        self._add_torso(20, 15, 10)
         
-        self._add_arm(-3, 4, 0, 'left')
-        self._add_arm(3, 4, 0, 'right')
+        self._add_arm(16, 15, 12, 'left')
+        self._add_arm(24, 15, 12, 'right')
         
-        self._add_leg(-1, -4, 0, 'left')
-        self._add_leg(1, -4, 0, 'right')
+        self._add_leg(21, 15, 3, 'left')
+        self._add_leg(19, 15, 3, 'right')
 
         return self.cubes
 
@@ -42,8 +42,8 @@ class figure:
             for dy in range(-2, 2):
                 for dz in range(-2, 2):
                     pos_x = x + dx * self.scale
-                    pos_y = y + dy * self.scale
-                    pos_z = z + dz * self.scale
+                    pos_y = y + dz * self.scale
+                    pos_z = z + dy * self.scale
                     
                     if abs(dx) == 1 and abs(dy) == 1 and abs(dz) == 1:
                         continue 
@@ -71,8 +71,8 @@ class figure:
             for dy in range(-4, 4):
                 for dz in range(-1, 1):
                     pos_x = x + dx * self.scale
-                    pos_y = y + dy * self.scale
-                    pos_z = z + dz * self.scale
+                    pos_y = y + dz * self.scale
+                    pos_z = z + dy * self.scale
 
                     if dy < -3:
                         colour = self.colours['belt']
@@ -90,8 +90,8 @@ class figure:
             for dy in range(-3, 3):
                 for dz in range(-1, 1):
                     pos_x = x + dx * self.scale + x_offset
-                    pos_y = y + dy * self.scale
-                    pos_z = z + dz * self.scale
+                    pos_y = y + dz * self.scale
+                    pos_z = z + dy * self.scale
                     
                     if dy < 0: 
                         colour = self.colours['skin']
@@ -108,8 +108,8 @@ class figure:
             for dy in range(-3, 3):
                 for dz in range(-1, 1):
                     pos_x = x + dx * self.scale
-                    pos_y = y + dy * self.scale
-                    pos_z = z + dz * self.scale
+                    pos_y = y + dz * self.scale
+                    pos_z = z + dy * self.scale
                     
                     if dy < -2:  
                         colour = self.colours['shoes']
