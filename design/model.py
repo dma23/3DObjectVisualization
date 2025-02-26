@@ -24,15 +24,15 @@ class figure:
 
         self.cubes = []
 
-        self._add_head(20, 15, 20)
+        self._add_head(20, 15, 22)
         
-        self._add_torso(20, 15, 10)
+        self._add_torso(20, 15, 14)
         
-        self._add_arm(16, 15, 12, 'left')
-        self._add_arm(24, 15, 12, 'right')
+        self._add_arm(16, 15, 14, 'left')
+        self._add_arm(24, 15, 14, 'right')
         
-        self._add_leg(21, 15, 3, 'left')
-        self._add_leg(19, 15, 3, 'right')
+        self._add_leg(21.5, 15, 3, 'left')
+        self._add_leg(18.5, 15, 3, 'right')
 
         return self.cubes
 
@@ -45,20 +45,8 @@ class figure:
                     pos_y = y + dz * self.scale
                     pos_z = z + dy * self.scale
                     
-                    if abs(dx) == 1 and abs(dy) == 1 and abs(dz) == 1:
-                        continue 
-
                     if dy == 1:  
                         colour = self.colours['hair']
-                    elif dy == -1 and abs(dx) < 2 and dz == 1:
-                        if dx == -1 and dz == 1: 
-                            colour = self.colours['eyes']
-                        elif dx == 0 and dz == 1: 
-                            colour = self.colours['eyes']
-                        elif dx in [-1, 0] and dz == 0:  
-                            colour = self.colours['mouth']
-                        else:
-                            colour = self.colours['skin']
                     else:
                         colour = self.colours['skin']
                     

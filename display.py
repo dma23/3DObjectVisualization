@@ -4,7 +4,7 @@ from generator import ObjectGenerator
 from matplotlib.animation import FuncAnimation
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from design.model import figure
-
+from design.DimensionConverter import imageConverter
 
 class Display3D: 
     
@@ -33,6 +33,15 @@ class Display3D:
         )
         self.create_button2.pack(side=tk.RIGHT, padx=5, pady=5)
 
+        
+        self.load_image_button = tk.Button(
+            self.frame,
+            text = 'Upload image',
+            command = self.generate3D
+        )
+        self.load_image_button.pack(side=tk.RIGHT, padx=15, pady=5)
+
+
         self.fig = plt.figure(figsize=(8, 8))
         self.ax = self.fig.add_subplot(111, projection='3d')
 
@@ -42,8 +51,6 @@ class Display3D:
         self.anim = FuncAnimation(
             self.fig, self.update, frames=360, interval=20, blit=True
         )
-
-
 
 
     def generate_shapes(self): 
@@ -60,6 +67,15 @@ class Display3D:
         self.objects = self.model.build()
 
         self.update_plot(-10, 50)
+
+
+    def generate3D(self):
+        self.objects = []
+        self.model = imageConverter()
+        self.objects = self.model.convert_to_3d()
+
+        self.update_plot(-50, 50)
+
 
 
     def update_plot(self, minVal=-100, maxVal=100):
