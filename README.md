@@ -1,16 +1,5 @@
 # ObjectVisualization
 
-<p align="center">
-    <img src="images/Shapes.png">
-</p>
-
-<p align="center">
-    <img src="images/Minecraft model.png">
-</p>
-
-<p align="center">
-    <img src="images/blobheart.png">
-</p>
 
 <p align="center">
     Current supported features include random shapes displayed in a 3D plane, some preloaded 3D models created using the loaded shapes, and a rough 2D to 3D conversion.
@@ -23,3 +12,16 @@
             - etc.
         - Save/load function for previously created models
 </p>
+
+<p align="center">
+    <img src="images/Minecraft model.png">
+</p>
+
+<p align="center">
+    <img src="images/blobheart.png">
+</p>
+
+<p align="center">
+    <img src="images/Shapes.png">
+</p>
+
