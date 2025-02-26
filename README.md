@@ -1,15 +1,15 @@
 # ObjectVisualization
 
 <p align="center">
-    <img src="images/readme_images/Shapes.png">
+    <img src="images/Shapes.png">
 </p>
 
 <p align="center">
-    <img src="images/readme_images/Minecraft model.png">
+    <img src="images/Minecraft model.png">
 </p>
 
 <p align="center">
-    <img src="images/readme_images/blobheart.png">
+    <img src="images/blobheart.png">
 </p>
 
 <p align="center">
