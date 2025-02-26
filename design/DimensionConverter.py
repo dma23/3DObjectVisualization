@@ -12,6 +12,7 @@ class imageConverter:
         self.edge_detection = False
         self.depth_factor = 10
         self.resolution = 20
+        self.gap_size = 0 
 
         self.load_image()
     
@@ -82,6 +83,8 @@ class imageConverter:
 
                     depth = (255 - avg_brightness) / 255 * self.depth_factor
 
+                    adj_cell_size = cell_size + self.gap_size
+
                     norm_x = (x / w - 0.5) * 20
                     norm_y = (0.5 - y / h) * 20 
                     norm_z = ((255 - avg_brightness) / 255) * self.depth_factor
@@ -89,7 +92,7 @@ class imageConverter:
                     if self.edge_detection and edges_gray is not None and np.mean(edges_gray[y:y_end, x:x_end]) > 50:
                         self.objects.append(Triangles([norm_x, norm_y, 0], max(0.5, depth/5), color_hex))
                     else:
-                        size = max(0.2, min(1.0, cell_size / max_dim * 20))  
+                        size = max(0.2, min(1.0, adj_cell_size / max_dim * 20))  
                         self.objects.append(Cube([norm_x, norm_y, norm_z/2], size, color_hex))
 
         return self.objects

@@ -17,12 +17,12 @@ class Object3D:
         pass 
 
     
-    def get_collection(self):
+    def get_collection(self, edges=''):
 
         if self.vertices is None or self.faces is None:
             return None
         
         face_vertices = [[self.vertices[i] for i in face] for face in self.faces]
-        collection = Poly3DCollection(face_vertices, alpha=0.8, linewidths=1, edgecolors='black')
+        collection = Poly3DCollection(face_vertices, alpha=0.8, linewidths=0.1, edgecolors='black')
         collection.set_facecolor(self.colour)
         return collection
