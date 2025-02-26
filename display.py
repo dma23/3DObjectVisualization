@@ -74,7 +74,7 @@ class Display3D:
         self.model = imageConverter()
         self.objects = self.model.convert_to_3d()
 
-        self.update_plot(-50, 50)
+        self.update_plot(-100, 100)
 
 
 

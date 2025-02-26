@@ -10,7 +10,7 @@ class imageConverter:
         self.image = None
         self.mesh = []
         self.edge_detection = False
-        self.depth_factor = 10
+        self.depth_factor = 5
         self.resolution = 20
         self.gap_size = 0 
 
@@ -85,8 +85,8 @@ class imageConverter:
 
                     adj_cell_size = cell_size + self.gap_size
 
-                    norm_x = (x / w - 0.5) * 20
-                    norm_y = (0.5 - y / h) * 20 
+                    norm_x = (x / w - 0.5) * 50
+                    norm_y = (0.5 - y / h) * 50
                     norm_z = ((255 - avg_brightness) / 255) * self.depth_factor
 
                     if self.edge_detection and edges_gray is not None and np.mean(edges_gray[y:y_end, x:x_end]) > 50:
